@@ -1,0 +1,15 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+logout:
+      path: /logout
+
+homeopathy:
+      path: /homeopathy
+increaseHom:
+      path: /increaseHom/{id}
+      defaults: { _controller: AppBundle:Homeopathy:increaseHom }
+decreaseHom:
+      path: /decreaseHom/{id}
+      defaults: { _controller: AppBundle:Homeopathy:decreaseHom }

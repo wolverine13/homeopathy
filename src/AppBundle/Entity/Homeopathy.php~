@@ -1,0 +1,45 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: wolverine13
+ * Date: 12.06.16
+ * Time: 09:20
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Homeopathy
+ * @ORM\Entity
+ * @ORM\Table(name="homeopathy")
+ */
+class Homeopathy
+{
+    /**
+     *  @ORM\Column(type="integer")
+     *  @ORM\Id
+     *  @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="string",length=30,nullable=false)
+     */
+    private $name;
+    /**
+     * @ORM\Column(type="integer",length=4,nullable=false)
+     */
+    private $ch;
+    /**
+     * @ORM\Column(type="integer",length=3,nullable=false)
+     */
+    private $qty;
+    /**
+     * @ORM\ManyToOne(targetEntity="User",inversedBy="homeopathies")
+     * @ORM\JoinColumn(name="usr_id",referencedColumnName="id")
+     */
+    private $usr_id;
+
+
+}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        th {padding-left:4%;
+            padding-right:4%;
+            font-weight: lighter;
+            font-style: italic;
+            text-align: center;
+        }
+        table {
+            margin-top:10%;
+            width:80%;
+            font-size:3em;
+        }
+        td {
+            font-family: handwritingFont;
+        }
+        div.panel-group {width:80%;margin-right: auto;margin-left: auto;}
+        div.panel-body {display:none;}
+    </style>
+    <a href="{{ path('homeopathy_edit', { 'id': homeopathy.id }) }}"><button class="btn btn-primary" value="Edit" title="Edit Homeopathy"><span class="glyphicon glyphicon-edit"></span></button> </a>
+    {{ form_start(delete_form) }}
+    <button id="delete" style ="display: inline;" type="submit" value="Delete" class="btn btn-primary" title="Remove Homeopathy"><span class="glyphicon glyphicon-remove"></span></button>
+
+    {{ form_end(delete_form) }}
+
+    <h1 style="display: inline;text-align: center;">Homeopathy</h1>
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-heading" >{{ homeopathy.name }}</div>
+            <div class="panel-body">
+                <table class="table-hover">
+                    <tbody>
+                   <!--     <tr>
+                            <th>Id</th>
+                            <td>{{ homeopathy.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td><b>{{ homeopathy.name }}</b></td>
+                        </tr> -->
+                        <tr>
+                            <th>Ch</th>
+                            <td>{{ homeopathy.ch }}</td>
+                        </tr>
+                        <tr>
+                            <th>Qty</th>
+                            <td>{{ homeopathy.qty }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<script>
+    $( document).ready( function(){
+        $("form").first().css("display", "inline");
+        $("form").first().submit(function () {
+            return confirm("Are you sure you want to delete this homeopathy?");
+        });
+    });
+    $(window).load(function(){
+        $("div.panel-body").slideDown("slow");
+    });
+
+</script>
+{% endblock %}

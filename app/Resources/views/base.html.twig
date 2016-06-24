@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet"
+              href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet"
+              href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css') }}">
+        <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <style>
+            td {padding-left:0%;font-weight: bold;font-size:150%;}
+            th  {text-align: center;}
+            tr {text-align:center;}
+            li {list-style-type: none;display: inline;}
+            table {
+                margin-top:5%;
+                margin-left:auto;
+                margin-right: auto;
+            }
+            a.homLink {
+                color:black;
+            }
+            a:hover {
+                color:limegreen;
+            }
+
+            @font-face {
+                font-family: handwritingFont;
+                src: url({{ asset('css/SCRIPTIN.ttf') }});
+
+            }
+            div.panel-group
+            {
+                margin-top:5%;
+                box-shadow: 10px 10px 5px #888888;
+            }
+            div.panel-heading {
+                font-family: handwritingFont;
+                font-size: 3em;
+                text-align: center;
+
+            }
+            h1 {font-family: handwritingFont; display:inline;}
+
+        </style>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('homeopathy_index') }}"><button class="btn btn-primary" value="Back" title="Back to homeopathy list"><span class="glyphicon glyphicon-step-backward"></span></button> </a>
+        <a href="/logout" class="glyphicon glyphicon-off" style="float:right;padding-right:3%;margin-top:2%;" title="logout"></a>
+        <a href="{{ path('homeopathy_new') }}" style="margin-bottom:2%;"><button class="btn btn-primary" value="New" title="New Homeopathy"><span class="glyphicon glyphicon-file"></span></button></a>
+    {% endif %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

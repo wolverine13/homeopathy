@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Homeopathy creation</h1>
+<style>
+    div.panel-group {width:60%;margin-right: auto;margin-left: auto;}
+    input{
+        padding-right:4%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-body">
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <div class="form-group">
+
+                {{ form_label(form.name,"Name",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                    {{ form_widget(form.name,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.ch,"CH",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.ch,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.qty,"QTY",{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.qty,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+                <input type="submit" value="Create" class="btn btn-primary" />
+
+            {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+           $("form").addClass("form-horizontal");
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,68 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet"
+          href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css') }}">
+    <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <style>
+        @media (max-width: @screen-xs-max) {
+            label {
+                font-size: 5em;
+            }
+            p {
+                font-size:5em;
+            }
+        }
+
+        @media (max-width: @screen-md-max) {
+            label {font-size: 8em;}
+            p {font-size: 8em;}
+        }
+        @media screen and (min-width: 480px) and (max-width: 1024px) {
+            label {font-size: 320%;}
+            button {height:10%; font-size: 10%;}
+            #cont {
+                margin-top:30%;
+
+            }
+
+        }
+    </style>;
+</head>
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<body  style="width:100%;height:100%;background-image: url('img/homeopathy.jpg');background-position: left bottom;background-repeat:no-repeat;">
+
+    <div class="modal show" tabindex="-1" role="dialog" aria-hidden="true" id="cont">
+        <form action="{{ path('login') }}" method="post" class="form col-md-12 center-block">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="text-center">Login</h1>
+                    </div>
+                    <div class="modal-body container-fluid ">
+                       <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control input-lg">
+                       </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="_password" class="form-control" style=";margin-bottom:5%;" class="form-control input-lg" />
+                        </div>
+
+            {#
+                If you want to control the URL the user
+                is redirected to on success (more details below)
+                <input type="hidden" name="_target_path" value="/account" />
+            #}
+	      <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+            <button type="submit" class="btn btn-lg btn-primary btn-block">login</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
